@@ -1,0 +1,115 @@
+<main>
+  <sky-fluid-grid>
+<div
+[skyTheme]="modernLightTheme">
+<div class="sky-form-group"> 
+  <button
+          aria-label="Add User Details"
+          class="sky-btn sky-btn-primary"
+          (click)="onInlineFormOpen()"
+          title="Click to add user"
+        >
+          <sky-icon
+            icon="plus-circle"
+          ></sky-icon>
+          Add User
+        </button>
+</div>
+<form *ngIf="showForm" novalidate [formGroup]='userForm' (ngSubmit)="onSubmit()">
+  <div class="sky-form-group" style="max-width: 50%">
+    <label for="form-group-first-input-example" class="sky-control-label sky-control-label-required">
+      First name
+    </label>
+    <input class="sky-form-control" id="form-group-first-input-example"  formControlName="firstName"  type="text">
+  </div>
+  <div class="sky-form-group" style="max-width: 50%">
+    <label for="form-group-second-input-example" class="sky-control-label sky-control-label-required">
+      Last name
+    </label>
+    <input class="sky-form-control" id="form-group-second-input-example" formControlName="lastName" type="text">
+  </div>
+  <div class="sky-form-group" style="max-width: 50%">
+    <label for="form-group-contactno-example" class="sky-control-label sky-control-label-required">
+      Contact No
+    </label>
+    <input class="sky-form-control" id="form-group-contactno-example" formControlName="contactNumber" type="text">
+  </div>
+  <ng-container *ngIf="contactNumberControl.errors && contactNumberControl.touched">
+
+    <div *ngIf="contactNumberControl.errors.required"
+      class="sky-error-label"
+    >
+      Contact number is required.
+    </div>
+
+    <div *ngIf="contactNumberControl.errors.pattern && contactNumberControl.dirty"
+      class="sky-error-label"
+    >
+      Enter a valid contact number
+    </div>
+
+  </ng-container>
+  <div class="sky-form-group" style="max-width: 50%">
+    <label for="form-group-email-example" class="sky-control-label sky-control-label-required">
+      Email
+    </label>
+    <input class="sky-form-control" id="form-group-email-example" formControlName="email" type="text">
+  </div>
+  <ng-container *ngIf="emailControl.errors && emailControl.touched">
+
+    <div *ngIf="emailControl.errors.required"
+      class="sky-error-label"
+    >
+      Email address is required.
+    </div>
+
+    <div *ngIf="emailControl.errors.skyEmail && emailControl.dirty"
+      class="sky-error-label"
+    >
+      Enter a valid email in the "joe@abc.com" format.
+    </div>
+
+  </ng-container>
+  <div class="sky-form-group" style="max-width: 50%">
+    <label for="form-group-dob-example" class="sky-control-label sky-control-label-required">
+      DOB
+    </label>
+    <sky-datepicker>
+      <input class="sky-form-control" id="form-group-dob-example" formControlName="dob" skyDatepickerInput [minDate]='minDate' [maxDate]='maxDate' type="text">
+    </sky-datepicker>
+  </div>
+  <div class="sky-form-group" style="max-width: 50%">
+    <label for="form-group-address-example" class="sky-control-label">
+      Address
+    </label>
+    <input class="sky-form-control" id="form-group-address-example" formControlName="address" type="text">
+  </div>
+  <div class="sky-form-group">
+    <button
+            aria-label="Submit User Details"
+            class="sky-btn sky-btn-primary"
+            type="submit"
+            [disabled]="!userForm.valid"
+          >
+            Submit
+          </button>
+  </div>
+</form>
+</div>
+
+<!--grid-->
+<div>
+  <sky-toolbar>
+    <sky-toolbar-item>
+      <sky-search [searchText]="searchText" [debounceTime]="250" (searchApply)="searchApplied($event)" (searchChange)="searchApplied($event)" (searchClear)="searchApplied($event)">
+      </sky-search>
+    </sky-toolbar-item>
+  </sky-toolbar>
+  <sky-ag-grid-wrapper>
+    <ag-grid-angular [gridOptions]="gridOptions" [rowData]="gridData">
+    </ag-grid-angular>
+  </sky-ag-grid-wrapper>
+</div>
+  </sky-fluid-grid>
+</main>
+
