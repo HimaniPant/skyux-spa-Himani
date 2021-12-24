@@ -10,18 +10,9 @@ import { UserDataService } from './shared/userDetail/user.data.service';
 
 @Component({
   selector: 'user-detail',
-  templateUrl: './user.detail.component.html',
-  styleUrls: ['./user.detail.component.scss']
+  templateUrl: './user.detail.component.html'
 })
 export class UserDetailComponent implements OnInit {
-
-  public get emailControl(): AbstractControl {
-    return this.userForm.get('email');
-  }
-
-  public get contactNumberControl(): AbstractControl {
-    return this.userForm.get('contactNumber');
-  }
 
   public modernLightTheme = new SkyThemeSettings(
     SkyTheme.presets.modern,
@@ -61,10 +52,10 @@ export class UserDetailComponent implements OnInit {
       headerName: 'Address'
    }
   ];
-
   public gridApi: GridApi;
   public gridOptions: GridOptions;
   public searchText: string;
+
   constructor(
     private agGridService: SkyAgGridService,
     private formBuilder: FormBuilder,
@@ -85,6 +76,14 @@ export class UserDetailComponent implements OnInit {
       onGridReady: gridReadyEvent => this.onGridReady(gridReadyEvent)
     };
     this.gridOptions = this.agGridService.getGridOptions({ gridOptions: this.gridOptions });
+  }
+
+  public get emailControl(): AbstractControl {
+    return this.userForm.get('email');
+  }
+
+  public get contactNumberControl(): AbstractControl {
+    return this.userForm.get('contactNumber');
   }
 
   public onGridReady(gridReadyEvent: GridReadyEvent): void {
@@ -108,10 +107,8 @@ export class UserDetailComponent implements OnInit {
         dob: this.userForm.get('dob').value,
         address: this.userForm.get('address').value
       };
-     console.log(this.userInfo);
      this.dataService.save(this.userInfo).subscribe( result => {
        this.gridData = result;
-       console.log(this.gridData);
        this.gridApi.setRowData(this.gridData);
        this.userForm.reset();
        this.showForm = false;
