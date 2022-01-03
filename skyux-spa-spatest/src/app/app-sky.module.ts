@@ -1,51 +1,30 @@
-import {
-  NgModule
-} from '@angular/core';
-import {
-  SkyAgGridModule
-} from '@skyux/ag-grid';
-import {
-  SkyAvatarModule
-} from '@skyux/avatar';
-import {
-  SkyDataManagerModule
-} from '@skyux/data-manager';
-import {
-  SkyDatepickerModule
-} from '@skyux/datetime';
+import { NgModule } from '@angular/core';
+import { SkyAgGridModule } from '@skyux/ag-grid';
+import { SkyAvatarModule } from '@skyux/avatar';
+import { SkyDataManagerModule } from '@skyux/data-manager';
+import { SkyDatepickerModule } from '@skyux/datetime';
 import { SkyCheckboxModule, SkyInputBoxModule } from '@skyux/forms';
 import {
-  SkyAlertModule, SkyIconModule, SkyKeyInfoModule
+  SkyAlertModule,
+  SkyIconModule,
+  SkyKeyInfoModule
 } from '@skyux/indicators';
+import { SkyInlineFormModule } from '@skyux/inline-form';
 import {
-  SkyInlineFormModule
-} from '@skyux/inline-form';
-import { SkyCardModule, SkyFluidGridModule, SkyToolbarModule } from '@skyux/layout';
-import {
-  SkyRepeaterModule
-} from '@skyux/lists';
-import {
-  SkySearchModule
-} from '@skyux/lookup';
-import {
-  SkyNavbarModule
-} from '@skyux/navbar';
-import {
-  SkyDropdownModule
-} from '@skyux/popovers';
-import {
-  SkyThemeModule,
-  SkyThemeService
-} from '@skyux/theme';
-import {
-  SkyEmailValidationModule
-} from '@skyux/validation';
-import {
-  AgGridModule
-} from 'ag-grid-angular';
-import {
-  UserDataService
-} from './shared/userDetail/user.data.service';
+  SkyCardModule,
+  SkyFluidGridModule,
+  SkyToolbarModule
+} from '@skyux/layout';
+import { SkyRepeaterModule } from '@skyux/lists';
+import { SkySearchModule } from '@skyux/lookup';
+import { SkyNavbarModule } from '@skyux/navbar';
+import { SkyPhoneFieldModule } from '@skyux/phone-field';
+import { SkyDropdownModule } from '@skyux/popovers';
+import { SkyThemeModule, SkyThemeService } from '@skyux/theme';
+import { SkyToastModule } from '@skyux/toast';
+import { SkyEmailValidationModule } from '@skyux/validation';
+import { AgGridModule } from 'ag-grid-angular';
+import { UserDataService } from './shared/data services/user.data.service';
 
 @NgModule({
   exports: [
@@ -68,11 +47,10 @@ import {
     AgGridModule,
     SkyIconModule,
     SkyEmailValidationModule,
-    SkyDatepickerModule
+    SkyDatepickerModule,
+    SkyPhoneFieldModule,
+    SkyToastModule
   ],
-  providers: [
-    SkyThemeService,
-    UserDataService
-  ]
+  providers: [SkyThemeService, UserDataService]
 })
-export class AppSkyModule { }
+export class AppSkyModule {}

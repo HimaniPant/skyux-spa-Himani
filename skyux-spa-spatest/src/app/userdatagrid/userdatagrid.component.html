@@ -1,0 +1,25 @@
+<app-nav></app-nav>
+
+<div class="sky-form-group"> 
+  <button
+          aria-label="Open User Form"
+          class="sky-btn sky-btn-primary"
+          (click)="openUserForm()"
+          title="Open user detail form"
+        >
+          Back to User Form
+        </button>
+</div>
+<!--grid-->
+<div>
+    <sky-toolbar>
+      <sky-toolbar-item>
+        <sky-search [searchText]="searchText" [debounceTime]="250" (searchApply)="searchApplied($event)" (searchChange)="searchApplied($event)" (searchClear)="searchApplied($event)">
+        </sky-search>
+      </sky-toolbar-item>
+    </sky-toolbar>
+    <sky-ag-grid-wrapper>
+      <ag-grid-angular [gridOptions]="gridOptions" [rowData]="gridData">
+      </ag-grid-angular>
+    </sky-ag-grid-wrapper>
+  </div>
