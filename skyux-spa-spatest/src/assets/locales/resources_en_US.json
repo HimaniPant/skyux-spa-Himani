@@ -1,22 +1,38 @@
 {
-  "example_string": {
-    "message": "This is an example string",
-    "_description": "The _description property gives context to the translator as to how the string is used in the product"
-  },
-  "app_nav_about": {
-    "message": "About",
-    "_description": "The text for the About top-level navigation item"
-  },
-  "app_nav_home": {
-    "message": "Home",
-    "_description": "The text for the Home top-level navigation item"
-  },
-  "home_title": {
-    "message": "SKY UX Template",
-    "_description": "Title for the home component"
-  },
-  "app_nav_demo": {
-    "message": "Demo",
+  "app_nav_userform": {
+    "message": "User Details",
     "_description": "The text for the Demo top-level navigation item"
+  },
+  "app_nav_usergrid": {
+    "message": "Users List",
+    "_description": "The text for the Demo top-level navigation item"
+  },
+  "first_name": {
+    "message": "First Name",
+    "_description": "label for first name"
+  },
+  "last_name": {
+    "message": "Last Name",
+    "_description": "label for first name"
+  },
+  "contact_number": {
+    "message": "Contact No.",
+    "_description": "label for first name"
+  },
+  "dob": {
+    "message": "DOB",
+    "_description": "label for first name"
+  },
+  "email": {
+    "message": "Email",
+    "_description": "label for first name"
+  },
+  "address": {
+    "message": "Address",
+    "_description": "label for first name"
+  },
+  "submit_btn": {
+    "message":"Submit",
+    "_description": "submit button text"
   }
 }

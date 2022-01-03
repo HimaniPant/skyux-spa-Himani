@@ -1,6 +1,4 @@
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -8,17 +6,13 @@ import {
 })
 export class AppNavComponent {
   public nav = [
-    // {
-    //   titleKey: 'app_nav_home',
-    //   path: '/'
-    // },
-    // {
-    //   titleKey: 'app_nav_about',
-    //   path: '/about'
-    // },
     {
-      titleKey: 'app_nav_demo',
-      path: '/'
+      titleKey: 'app_nav_userform',
+      path: '/userdetail'
+    },
+    {
+      titleKey: 'app_nav_usergrid',
+      path: '/userdatagrid'
     }
   ];
 }

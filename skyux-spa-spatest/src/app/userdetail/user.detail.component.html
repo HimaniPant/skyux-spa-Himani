@@ -1,0 +1,161 @@
+<main>
+  <sky-fluid-grid>
+    <sky-row>
+      <sky-column>
+        <button
+          aria-label="View User List"
+          class="sky-btn sky-btn-primary sky-form-group"
+          (click)="openUserList()"
+          title="Click to add user"
+        >
+          View User List
+        </button>
+      </sky-column>
+    </sky-row>
+
+    <sky-row>
+      <sky-column>
+        <h1>User detail form</h1>
+      </sky-column>
+    </sky-row>
+    
+    <div [skyTheme]="modernLightTheme">
+      <form novalidate [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="sky-form-group userForm" >
+          <label
+            for="form-group-first-input-example"
+            class="sky-control-label sky-control-label-required"
+          >
+          {{ 'first_name' | skyAppResources }}
+          </label>
+          <input
+            class="sky-form-control"
+            id="form-group-first-input-example"
+            formControlName="firstName"
+            type="text"
+          />
+        </div>
+        <div class="sky-form-group userForm" >
+          <label
+            for="form-group-second-input-example"
+            class="sky-control-label sky-control-label-required"
+          >
+          {{ 'last_name' | skyAppResources }}
+          </label>
+          <input
+            class="sky-form-control"
+            id="form-group-second-input-example"
+            formControlName="lastName"
+            type="text"
+          />
+        </div>
+        <div class="sky-form-group userForm">
+          <label
+            for="form-group-contactno-example"
+            class="sky-control-label sky-control-label-required"
+          >
+          {{ 'contact_number' | skyAppResources }}
+          </label>
+          <sky-input-box>
+            <sky-phone-field
+              [defaultCountry]="'us'"
+            >
+              <input
+                class="sky-form-control"
+                id="form-group-contactno-example"
+                [formControl]="userForm.controls['contactNumber']"
+                skyPhoneFieldInput
+              >
+            </sky-phone-field>
+          </sky-input-box>
+        </div>
+        <ng-container
+          *ngIf="contactNumberControl.errors && contactNumberControl.touched"
+        >
+          <div
+            *ngIf="contactNumberControl.errors.required"
+            class="sky-error-label"
+          >
+            Contact number is required.
+          </div>
+
+          <div
+            *ngIf="
+              contactNumberControl.errors && !contactNumberControl.errors.required && contactNumberControl.dirty
+            "
+            class="sky-error-label"
+          >
+            Enter a valid contact number
+          </div>
+        </ng-container>
+        <div class="sky-form-group userForm" >
+          <label
+            for="form-group-email-example"
+            class="sky-control-label sky-control-label-required"
+          >
+          {{ 'email' | skyAppResources }}
+          </label>
+          <input
+            class="sky-form-control"
+            id="form-group-email-example"
+            formControlName="email"
+            type="text"
+          />
+        </div>
+        <ng-container *ngIf="emailControl.errors && emailControl.touched">
+          <div *ngIf="emailControl.errors.required" class="sky-error-label">
+            Email address is required.
+          </div>
+
+          <div
+            *ngIf="emailControl.errors.skyEmail && emailControl.dirty"
+            class="sky-error-label"
+          >
+            Enter a valid email in the "joe@abc.com" format.
+          </div>
+        </ng-container>
+        <div class="sky-form-group userForm" >
+          <label
+            for="form-group-dob-example"
+            class="sky-control-label sky-control-label-required"
+          >
+          {{ 'dob' | skyAppResources }}
+          </label>
+          <sky-datepicker>
+            <input
+              class="sky-form-control"
+              id="form-group-dob-example"
+              [formControl]="userForm.controls['dob']"
+              skyDatepickerInput
+              [minDate]="minDate"
+              [maxDate]="maxDate"
+              type="text"
+            />
+          </sky-datepicker>
+        </div>
+        <div class="sky-form-group userForm" >
+          <label for="form-group-address-example" class="sky-control-label">
+            {{ 'address' | skyAppResources }}
+          </label>
+          <input
+            class="sky-form-control"
+            id="form-group-address-example"
+            formControlName="address"
+            type="text"
+          />
+        </div>
+        <div class="sky-form-group">
+          <button
+            aria-label="Submit User Details"
+            class="sky-btn sky-btn-primary"
+            type="submit"
+            id="submit"
+            [disabled]="!userForm.valid"
+          >
+            {{'submit_btn' | skyAppResources}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </sky-fluid-grid>
+</main>
